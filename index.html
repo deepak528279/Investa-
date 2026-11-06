@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VentureLink | Startup Network</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  color: #172033;
+}
+header {
+  background: #111c3a;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+header span { color: #64a8ff; }
+nav {
+  background: white;
+  padding: 15px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+nav a {
+  color: #263b60;
+  text-decoration: none;
+  font-weight: bold;
+}
+main { padding: 20px; max-width: 800px; margin: auto; }
+.hero {
+  background: linear-gradient(135deg, #17264d, #315cc8);
+  color: white;
+  padding: 28px;
+  border-radius: 18px;
+}
+button {
+  background: #3868dc;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 18px 0;
+  box-shadow: 0 3px 12px #00000008;
+}
+.tag { color: #3868dc; font-weight: bold; }
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #d5dbea;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+<header>Venture<span>Link</span></header>
+<nav>
+<a href="#">Home</a>
+<a href="#explore">Explore</a>
+<a href="#create">Share Idea</a>
+<a href="#ai">AI Assistant</a>
+</nav>
+<main>
+<section class="hero">
+<h1>Where Ideas Meet Investors</h1>
+<p>Discover startups. Share your vision. Build the future together.</p>
+<button onclick="document.getElementById('create').scrollIntoView()">Share Your Idea</button>
+</section>
+
+<h2 id="explore">Explore Startups</h2>
+<div id="feed">
+<div class="card">
+<span class="tag">FOOD & HOSPITALITY</span>
+<h3>StayNest — Affordable Homestays</h3>
+<p>A platform connecting travelers with unique local homestays.</p>
+<p><b>Funding sought:</b> ₹8,00,000</p>
+<button onclick="alert('Connection request sent!')">Connect with Founder</button>
+</div>
+<div class="card">
+<span class="tag">AGRICULTURE</span>
+<h3>FarmDirect — Fresh From Farmers</h3>
+<p>Helping farmers sell fresh produce directly to customers.</p>
+<p><b>Funding sought:</b> ₹12,00,000</p>
+<button onclick="alert('Connection request sent!')">Connect with Founder</button>
+</div>
+</div>
+
+<section class="card" id="create">
+<h2>Share Your Business Idea</h2>
+<input id="name" placeholder="Business name">
+<input id="category" placeholder="Industry">
+<textarea id="description" placeholder="Describe your business model"></textarea>
+<input id="funding" placeholder="Funding required (₹)">
+<button onclick="postIdea()">Publish Idea</button>
+</section>
+
+<section class="card" id="ai">
+<h2>AI Business Assistant</h2>
+<p>Get started by writing down your business idea.</p>
+<textarea id="aiIdea" placeholder="Describe your idea..."></textarea>
+<button onclick="analyzeIdea()">Analyze My Idea</button>
+<p id="result"></p>
+</section>
+</main>
+
+<script>
+function postIdea() {
+  const name = document.getElementById('name').value;
+  const category = document.getElementById('category').value;
+  const description = document.getElementById('description').value;
+  const funding = document.getElementById('funding').value;
+  if (!name || !description) {
+    alert('Please enter your business name and description.');
+    return;
+  }
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<span class="tag">${category}</span>
+  <h3>${name}</h3><p>${description}</p>
+  <p><b>Funding sought:</b> ₹${funding || 'Not specified'}</p>
+  <button onclick="alert('Connection request sent!')">Connect with Founder</button>`;
+  document.getElementById('feed').prepend(card);
+  document.getElementById('name').value = '';
+  document.getElementById('category').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('funding').value = '';
+}
+function analyzeIdea() {
+  const idea = document.getElementById('aiIdea').value;
+  if (!idea) {
+    alert('Please describe your business idea first.');
+    return;
+  }
+  document.getElementById('result').innerHTML =
+  '<b>Business idea received!</b><br>Consider defining your target customers, revenue model, startup costs, competitors, and what makes your idea unique. This is a basic checklist, not an AI-generated investment assessment.';
+}
+</script>
+</body>
+  </html>
