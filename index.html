@@ -157,6 +157,17 @@ function analyzeIdea() {
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
+  async function testSupabase() {
+  const { error } = await supabase.from('startups').select('*').limit(1);
+
+  if (error) {
+    alert("Connection error: " + error.message);
+  } else {
+    alert("Investa connected successfully!");
+  }
+}
+
+testSupabase();
 </script>
 </body>
   </html>
