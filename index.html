@@ -148,5 +148,15 @@ function analyzeIdea() {
   '<b>Business idea received!</b><br>Consider defining your target customers, revenue model, startup costs, competitors, and what makes your idea unique. This is a basic checklist, not an AI-generated investment assessment.';
 }
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://fndcwytsvstawoxhmqqp.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_9lqXqREGRHaMkrHByDv-Xg_RwQFTjCl"
+
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+</script>
 </body>
   </html>
